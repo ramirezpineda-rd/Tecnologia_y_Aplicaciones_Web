@@ -8,18 +8,37 @@
         }
 
         //Metodo para mostrar los enlaces de la pagina
-        public function enlacesPaginasController(){
+        public function registroUsuarioController(){
             //Verificar la variable "action" que viene desde los URL's de navegacion.
-            if(isset($_GET["action"])){
-                $enlaces = $_GET["action"];    
+            $datosController = array {"usuario"=>$_POST["usuarioRegistro"],
+                                        "password"=>$_POST["passwordRegistro"],
+                                        "email"=>$_POST["emailRegistro"]};
+            
+            //Enviamos los parametros al Modelo para que procese el registro
+            $respuesta = Datos::registroUsuarioModel($datosController,"usuarios");
+         
+            if($respuesta == "success"){
+                header("location:index.php?action=ok");
             }
             else{
-                $enlaces = "index";
+                header("location:index.php");
             }
-            //Mandar el parametro de "enlacesController" al modelo "EnlacesPaginas" en su
-            //propiedad "enlacesPaginasModel"
-            $respuesta = Paginas::enlacesPaginasModel($enlaces);
-            include $respuesta;
+        }    
+
+        //Metodo para INGRESO DE USUARIOS
+        public function ingresoUsuarioController(){
+            if(isset($_POST["usuarioIngreso"])){
+                $datosController = array{"usuario"=>$_POST["usuarioIngreso"];
+                                         "password"=>$_POST["passwordIngreso"]};
+
+                //Mandar valores del array al modelo
+                $respuesta = Datos::ingresoUsuarioModel($datosController,"usuarios");
+
+                //Recibe respuesta del modelo
+            }
+        }
+            
+            
         }
     }
 ?>
