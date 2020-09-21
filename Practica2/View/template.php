@@ -1,13 +1,12 @@
 <html>
-    <head>
-        <title>Practica no. 1</title>
-        
-        <style>
-            header{
-			    position:relative;
-			    margin:auto;
-			    text-align:center;
-			    padding:5px;	
+<head>
+    <title>Práctica no. 1</title>
+    <style>
+    header{
+			position:relative;
+			margin:auto;
+			text-align:center;
+			padding:5px;	
             }
             
             nav{
@@ -41,18 +40,16 @@
                 position:relative;
                 padding:20px;
             }
+    </style>
 
-            section{
-                position:relative;
-                padding:20px;
-            }
-        </style>
-    </head>
-    <body>
-            <header><h1>Bienvenidos a la practica no. 1</h1></header>
 
+</head>
+<body>
+        <header>
+        <h1>Bienvenidos a la práctica no. 1</h1>
+        </header>
             <?php
-                //Incluir el menu de navegacion.
+            //incluir el menú de navegación
                 include "navegacion.php";
             ?>
             <section>
@@ -63,7 +60,5 @@
                     $mvc -> enlacesPaginasController();
                 ?>
             </section>
-    </body>
+</body>
 </html>
-
-        
