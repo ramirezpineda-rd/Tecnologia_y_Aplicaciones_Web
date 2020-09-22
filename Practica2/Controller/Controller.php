@@ -80,15 +80,17 @@
             //Enviamos al modelo el id para hacer la consulta y obtener sus datos
             $respuesta = Datos::editarUsuariosModel($datosController, "usuarios");
             //Recibimos respuesta del modelo e IMPRIMIMOS UNA FORM PARA EDITAR
-            echo '<input type="hidden" value ="'.$respuesta["id"].'"
-            name="idEditar">
-                <input type="text value ="'.$respuesta["usuarios"].'"
-                name="usuarioEditar" required>
-                <input type="text' value ="'.$respuesta["password"].'"
-                name="passwordEditar" required>
-                <input type="text' value ="'.$respuesta["email"].'"name="emailEditar">
-                <input type="submit" value "Actualizar">'";
+            echo '<input type = "hidden" value ="'.$respuesta["id"].'"
+            	name = "idEditar">
+                <input type = "text value ="'.$respuesta["usuarios"].'"
+                name = "usuarioEditar" required>
+                <input type = "text" value ="'.$respuesta["password"].'"
+                name = "passwordEditar" required>
+                <input type = "text" value ="'.$respuesta["email"].'"
+                name = "emailEditar" required>
+                <input type = "submit" value "Actualizar">';
         }
+        
         //MÉTODO PARA ACTUALIZAR USUARIOS
         public function actualizarUsuariosController(){
             if(isset($_POST["usuarioEditar"])){
@@ -108,7 +110,18 @@
                 }                                    
             }
         }
+        //Borrado de usuario
+        public function borrarUsuarioController(){
+            if(isset($_GET["idBorrar"])){
+                $datosController = $_GET["idBorrar"];
 
+                //Mandar ID al controlador para que se ejecute el controlador
+                $respuesta = Datos::borrarUsuarioModel($datosController, "usuarios");
+
+                //Recibimos la respuesta del modelo de aeliminacion
+                if($respuesta == "succes")
+            }
+        }
     }
 
 ?>
