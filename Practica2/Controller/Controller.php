@@ -15,7 +15,7 @@
            include $respuesta;
         }
 
-        //Método para registro de usuarios
+        //Método del controlador para REGISTRO DE USUARIO
         public function registroUsuarioController(){
             //Almaceno en un array los valores de la vista de registro
             $datosController = array("usuario"=>$_POST["usuarioRegistro"],
@@ -73,16 +73,17 @@
             }
         }
 
-        //MÉTODO LISTAR USUARIOS
+        //MÉTODO LISTAR USUARIOS PARA EDITAR
         public function editarUsuarioController(){
-            //Solicitar el id del usuarios a editar
-            $datosController = $_GET("id");
+            //Solicitar el id del usuario a editar
+            $datosController = $_GET["id"];
             //Enviamos al modelo el id para hacer la consulta y obtener sus datos
             $respuesta = Datos::editarUsuariosModel($datosController, "usuarios");
+           
             //Recibimos respuesta del modelo e IMPRIMIMOS UNA FORM PARA EDITAR
             echo '<input type = "hidden" value ="'.$respuesta["id"].'"
             	name = "idEditar">
-                <input type = "text value ="'.$respuesta["usuarios"].'"
+                <input type = "text value ="'.$respuesta["usuario"].'"
                 name = "usuarioEditar" required>
                 <input type = "text" value ="'.$respuesta["password"].'"
                 name = "passwordEditar" required>
@@ -92,7 +93,7 @@
         }
         
         //MÉTODO PARA ACTUALIZAR USUARIOS
-        public function actualizarUsuariosController(){
+        public function actualizarUsuarioController(){
             if(isset($_POST["usuarioEditar"])){
                 //Preparamos un array con los id de el form del controlador 
                 //anterior para ejecutar la actualizacion en un modelo.
@@ -119,7 +120,9 @@
                 $respuesta = Datos::borrarUsuarioModel($datosController, "usuarios");
 
                 //Recibimos la respuesta del modelo de aeliminacion
-                if($respuesta == "succes")
+                if($respuesta == "succes"){
+                    header("location:index.php?action=usuarios");
+                }
             }
         }
     }

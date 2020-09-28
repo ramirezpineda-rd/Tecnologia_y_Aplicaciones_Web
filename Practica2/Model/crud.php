@@ -10,9 +10,9 @@
             
             
             //bindParam() Vincula el valor de una variable de PHP a un parámetro de sustitución con nombre o signo de interrogacion correspondiente. Es la sentencia usada para preparar un query de SQL.
-            $stm->bindParam(":usuario",$datosModel["usuario"],PDO::PARAM_STR); 
-            $stm->bindParam(":password",$datosModel["contrasena"],PDO::PARAM_STR); 
-            $stm->bindParam(":email",$datosModel["email"],PDO::PARAM_STR); 
+            $stmt->bindParam(":usuario",$datosModel["usuario"], PDO::PARAM_STR); 
+            $stmt->bindParam(":password",$datosModel["contrasena"], PDO::PARAM_STR); 
+            $stmt->bindParam(":email",$datosModel["email"], PDO::PARAM_STR); 
             //Verificar ejecución del Query
             if($stmt->execute()){
                 return "success";
@@ -24,7 +24,7 @@
             $stmt->close();
 
         }
-        //Método ingreso usuario
+        //MÉTODO INGRESO USUARIO
         public function ingresoUsuariosModel($datosModel, $tabla){
             //Preparar el PDO
             $stmt=Conexion::conectar()->prepare("SELECT usuario, contrasena FROM $tabla WHERE usuario = :usuario");
@@ -50,13 +50,14 @@
         //Método para SELECCIONAR usuarios
         public function editarUsuarioModel($datosModel, $tabla){
             $stmt = Conexion::conectar()->prepare("SELECT id, usuarios, contrasena, email FROM $tabla WHERE id = :id");
-            $stmt->bindParam(":id", $datosModel, PDO:PARAM_INT);
+            $stmt->bindParam(":id", $datosModel, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch();
             $stmt->close();
         }
         //Método para ACTUALIZAR usuarios (UPDATE)
         public function actualizarUsuarioModel($datosModel, $tabla){
+            //Preparar el QUERY
             $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET usuario =
             :usuario, contrasena = :password, email = :email WHERE id = :id");
         }
@@ -67,7 +68,7 @@
         $stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_STR);
         
         //Preparar respuesta
-        if($sstm->execute()){
+        if($stmt->execute()){
             return "succes";
         }else{
             return "error";
@@ -76,9 +77,9 @@
         //Cerrar la conexion del PDO
         $stmt->close();
 
-        //Borrar Usuarios
+        //Borrar USUARIOS
         public function borrarUsuarioModel($datosModel, $tabla){
-            //Preparar el query para eliminar
+            //Preparar el QUERY para eliminar
             $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = 
             :id");
 
