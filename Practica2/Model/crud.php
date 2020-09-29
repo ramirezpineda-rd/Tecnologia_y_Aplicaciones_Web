@@ -60,23 +60,23 @@
             //Preparar el QUERY
             $stmt = Conexion::conectar()->prepare("UPDATE $tabla SET usuario =
             :usuario, contrasena = :password, email = :email WHERE id = :id");
-        }
-        //Ejecutar el QUERY
-        $stmt->bindParam(":usuario", $datosModel["usuario"], PDO::PARAM_STR);
-        $stmt->bindParam(":password", $datosModel["contrasena"], PDO::PARAM_STR);
-        $stmt->bindParam(":email", $datosModel["email"], PDO::PARAM_STR);
-        $stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_STR);
         
-        //Preparar respuesta
-        if($stmt->execute()){
-            return "succes";
-        }else{
-            return "error";
+            //Ejecutar el QUERY
+            $stmt->bindParam(":usuario", $datosModel["usuario"], PDO::PARAM_STR);
+            $stmt->bindParam(":password", $datosModel["contrasena"], PDO::PARAM_STR);
+            $stmt->bindParam(":email", $datosModel["email"], PDO::PARAM_STR);
+            $stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_STR);
+        
+            //Preparar respuesta
+            if($stmt->execute()){
+                return "succes";
+            }else{
+                return "error";
+            }
+
+            //Cerrar la conexion del PDO
+            $stmt->close();
         }
-
-        //Cerrar la conexion del PDO
-        $stmt->close();
-
         //Borrar USUARIOS
         public function borrarUsuarioModel($datosModel, $tabla){
             //Preparar el QUERY para eliminar

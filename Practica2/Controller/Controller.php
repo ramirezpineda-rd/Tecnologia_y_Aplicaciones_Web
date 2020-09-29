@@ -1,26 +1,30 @@
 <?php
-    class MvcController {
+    class MvcController 
+    {
+        
         //Método para llamar a la plantilla template
         public function plantilla(){
             include "View/template.php";
         }
+        
         //Método para mostrar los enlaces de la página
         public function enlacesPaginasController(){
-           if(isset($_GET['action'])){
+            if(isset($_GET['action'])){
                 $enlaces = $_GET['action'];
-           }else{
+            }
+            else{
                $enlaces = "index";
-           }
-           $respuesta=Paginas::enlacesPaginasModel($enlaces);
-           include $respuesta;
+            }
+            $respuesta = Paginas::enlacesPaginasModel($enlaces);
+            include $respuesta;
         }
 
         //Método del controlador para REGISTRO DE USUARIO
         public function registroUsuarioController(){
             //Almaceno en un array los valores de la vista de registro
             $datosController = array("usuario"=>$_POST["usuarioRegistro"],
-                                "password"=>$_POST["passwordRegistro"], 
-                                "email"=>$_POST["emailRegistro"]);
+                                        "password"=>$_POST["passwordRegistro"], 
+                                        "email"=>$_POST["emailRegistro"]);
             //Enviamos los parámetros al Modelo para que procese el registro
             $respuesta = Datos::registroUsuarioModel($datosController, "usuarios");
 
