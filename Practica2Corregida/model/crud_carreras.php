@@ -1,18 +1,17 @@
 <?php
     require_once "conexion.php";
     //Modelo que permite mostrar el enlace de las paginas con las vistas
-    class Datos extends Conexion {
+    class Datos1 extends Conexion {
         //Método del modelo de registro de usuarios (Recibe datos del controlador)
         public function registroCarreraModel($datosModel, $tabla){
             //Prepara el modelo para hacer los inserts a la BD
-            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id,nombre,clave,materia) VALUES (:id,:nombre,:clave,:materia)");
+            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id,nombre) VALUES (:id,:nombre)");
             //Prepare() prepara una sentencia SQL para ser ejecutada por el método PDOStatement::execute.
             
             //bindParam() Vincula el valor de una variable de PHP a un parámetro de sustitución con nombre o signo de interrogacion correspondiente. Es la sentencia usada para preparar un query de SQL.
             $stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_STR); 
             $stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR); 
-            $stmt->bindParam(":clave", $datosModel["clave"], PDO::PARAM_STR); 
-            $stmt->bindParam(":materia", $datosModel["materia"], PDO::PARAM_STR);
+            
             //Verificar ejecución del Query
             if($stmt->execute()){
                 return "success";
@@ -26,7 +25,7 @@
 
         //MÉTODO PARA VISTA CARRERAS (TABLA)
         public function vistaCarreraModel($tabla){
-            $stmt = Conexion::conectar()->prepare("SELECT id, nombre, clave, materia FROM $tabla");
+            $stmt = Conexion::conectar()->prepare("SELECT id, nombre FROM $tabla");
             $stmt->execute();
             return $stmt->fetchAll();
             $stmt->close();
@@ -34,7 +33,7 @@
 
         //Método para SELECCIONAR usuarios
         public function editarCarreraModel($datosModel, $tabla){
-            $stmt = Conexion::conectar()->prepare("SELECT id, nombre, clave, materia FROM $tabla
+            $stmt = Conexion::conectar()->prepare("SELECT id, nombre FROM $tabla
             where id = :id");
             $stmt->bindParam(":id", $datosModel, PDO::PARAM_INT);
             $stmt->execute();
@@ -48,8 +47,6 @@
             //Ejecutar el QUERY
             $stmt->bindParam(":id", $datosModel["id"], PDO::PARAM_STR);
             $stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR);
-            $stmt->bindParam(":clave", $datosModel["clave"], PDO::PARAM_STR);
-            $stmt->bindParam(":materia", $datosModel["materia"], PDO::PARAM_STR);
 
             //Preparar respuesta
             if($stmt->execute()){

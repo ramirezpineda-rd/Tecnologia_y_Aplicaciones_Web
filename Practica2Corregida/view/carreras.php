@@ -14,15 +14,13 @@
         <thead>
             <tr>
                 <th>Nombre</th>
-                <th>Clave</th>
-                <th>Materia</th>
                 <th></th>
                 <th></th>
             </tr>
         </thead>
         <tbody>
             <?php
-                $vistaCarrera = new MvcController();
+                $vistaCarrera = new MvcControllerCarrera();
                 $vistaCarrera->vistaCarreraController();
                 $vistaCarrera->borrarCarreraController();
             ?>

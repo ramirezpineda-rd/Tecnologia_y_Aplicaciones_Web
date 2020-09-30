@@ -22,9 +22,9 @@
         </thead>
         <tbody>
             <?php
-                $vistaUsuario = new MvcController();
-                $vistaUsuario->vistaMateriaController();
-                $vistaUsuario->borrarMateriaController();
+                $vistaMateria = new MvcControllerMateria();
+                $vistaMateria->vistaMateriaController();
+                $vistaMateria->borrarMateriaController();
             ?>
         </tbody>
     </table>

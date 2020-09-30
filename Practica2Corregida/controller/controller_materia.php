@@ -1,5 +1,5 @@
 <?php
-    class MvcController {
+    class MvcControllerMateria {
         //Método para llamar a la plantilla template
         public function plantilla(){
             include "view/template.php";
@@ -23,7 +23,7 @@
                                 "clave"=>$_POST["claveRegistro"],
                                 "carrera"=>$_POST["carreraRegistro"]);
             //Enviamos los parámetros al Modelo para que procese el registro
-            $respuesta = Datos::registroMateriaModel($datosController, "materias");
+            $respuesta = Datos2::registroMateriaModel($datosController, "materias");
 
             //Recibir la repuesta del modelo para saber que sucedió (success o error) 
             if($respuesta == "success"){
@@ -37,7 +37,7 @@
         //Método VISTA MATERIA
         public function vistaMateriaController(){
             //Envio al Modelo la variable de control y la tabla a donde se hará la consulta.
-            $respuesta = Datos::vistaMateriaModel("materias");
+            $respuesta = Datos2::vistaMateriaModel("materias");
             foreach ($respuesta as $row => $item){
                 echo '<tr>
                     <td>'.$item["nombre"].'</td>
@@ -58,7 +58,7 @@
             //Solicitar el id del usuarios a editar
             $datosController = $_GET["id"];
             //Enviamos al modelo el id para hacer la consulta y obtener sus datos
-            $respuesta = Datos::editarMateriaModel($datosController, "materias");
+            $respuesta = Datos2::editarMateriaModel($datosController, "materias");
             //Recibimos respuesta del modelo e IMPRIMIMOS UNA FORM PARA EDITAR
             echo'<input type="hidden" value="'.$respuesta["id"].'"
                 name="idEditar">
@@ -80,7 +80,7 @@
                                         "clave"=>$_POST["claveEditar"],
                                         "carrera"=>$_POST["carreraEditar"]);
                 //Enviar el array a el modelo que generara el UPDATE
-                $respuesta = Datos::actualizarMateriaModel($datosController,"materias");
+                $respuesta = Datos2::actualizarMateriaModel($datosController,"materias");
                 //Recibimos respuesta del modelo para determinar si se llevo a cabo el UPDATE de manera correcta
                 if($respuesta=="success"){
                     header("location:index.php?action=cambio");
@@ -96,7 +96,7 @@
                 $datosController = $_GET["idBorrar"];
 
                 //Mandar ID  al controlador para que ejecute el DELETE.
-            $respuesta = Datos::borrarMateriaModel($datosController, "materias");
+            $respuesta = Datos2::borrarMateriaModel($datosController, "materias");
 
             //Recibimos la respuesta del modelo de eliminación 
             if($respuesta == "success"){

@@ -1,7 +1,7 @@
 <?php
     require_once "conexion.php";
     //Modelo que permite mostrar el enlace de las paginas con las vistas
-    class Datos extends Conexion {
+    class Datos2 extends Conexion {
         //Método del modelo de registro de usuarios (Recibe datos del controlador)
         public function registroMateriaModel($datosModel, $tabla){
             //Prepara el modelo para hacer los inserts a la BD
@@ -64,7 +64,7 @@
 
         }
         //Borrar MATERIAS
-        public function borrarMateriasModel($datosModel, $tabla){
+        public function borrarMateriaModel($datosModel, $tabla){
             //Preparar el QUERY para eliminar
             $stmt = Conexion::conectar()->prepare("DELETE FROM $tabla WHERE id = :id");
             $stmt->bindParam(":id", $datosModel, PDO::PARAM_STR);
