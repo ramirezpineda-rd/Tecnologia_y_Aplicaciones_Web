@@ -84,7 +84,7 @@
                 <input type="text" value ="'.$respuesta["usuario"].'"
                 name="usuarioEditar" required>
                 <input type="text" value="'.$respuesta["contrasena"].'"
-                name="contrasenaEditar" required>
+                name="passwordEditar" required>
                 <input type="text" value="'.$respuesta["email"].'"
                 name="emailEditar" required>
                 <input type="submit" value= "Actualizar">';
@@ -179,7 +179,7 @@
              if(isset($_POST["carreraEditar"])){
                  //Preparamos un array con los id de el form del controlador 
                  //anterior para ejecutar la actualizacion en un modelo.
-                 $datosController=array("id_carrera"=>$_POST["idEditar"],
+                 $datosController=array("id_carrera"=>$_POST["id_carreraEditar"],
                                          "nombre"=>$_POST["nombreEditar"]);
                  //Enviar el array a el modelo que generara el UPDATE
                  $respuesta = Datos::actualizarCarreraModel($datosController,"carreras");
@@ -270,7 +270,7 @@
              if(isset($_POST["materiaEditar"])){
                  //Preparamos un array con los id de el form del controlador 
                  //anterior para ejecutar la actualizacion en un modelo.
-                 $datosController=array("id_materia"=>$_POST["idEditar"],
+                 $datosController=array("id_materia"=>$_POST["id_materiaEditar"],
                                          "nombre"=>$_POST["nombreEditar"],
                                          "clave"=>$_POST["claveEditar"],
                                          "carrera"=>$_POST["carreraEditar"]);
