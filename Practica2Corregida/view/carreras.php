@@ -20,7 +20,7 @@
         </thead>
         <tbody>
             <?php
-                $vistaCarrera = new MvcControllerCarrera();
+                $vistaCarrera = new MvcController();
                 $vistaCarrera->vistaCarreraController();
                 $vistaCarrera->borrarCarreraController();
             ?>

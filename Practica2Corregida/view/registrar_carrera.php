@@ -1,15 +1,13 @@
 <h1>REGISTRAR CARRERA</h1>
 <form method="POST">
-    <input type="text" placeholder="Nombre" name="nombreRegistro" required>
-    <input type="password" placeholder="Clave" name="claveRegistro" required>
-    <input type="text" placeholder="Carrera" name="carreraRegistro" required>
+    <input type="text" placeholder="nombre" name="nombreRegistro" required>
     <input type="submit" value="Enviar">
 </form>
 
 
 
 <?php
-    $registrodeCarrera = new MvcController();
+    $registrodeCarrera = new MvcControllerCarrera();
     $registrodeCarrera->registroCarreraController();
 
     //Verificar la URL correcta

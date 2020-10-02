@@ -22,7 +22,7 @@
         </thead>
         <tbody>
             <?php
-                $vistaMateria = new MvcControllerMateria();
+                $vistaMateria = new MvcController();
                 $vistaMateria->vistaMateriaController();
                 $vistaMateria->borrarMateriaController();
             ?>

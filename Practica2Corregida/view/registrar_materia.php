@@ -1,7 +1,7 @@
 <h1>REGISTRAR MATERIA</h1>
 <form method="POST">
-    <input type="text" placeholder="Nombre" name="nombreRegistro" required>
-    <input type="password" placeholder="clave" name="claveRegistro" required>
+    <input type="text" placeholder="nombre" name="nombreRegistro" required>
+    <input type="text" placeholder="clave" name="claveRegistro" required>
     <input type="text" placeholder="carrera" name="carreraRegistro" required>
     <input type="submit" value="Enviar">
 </form>
@@ -9,7 +9,7 @@
 
 
 <?php
-    $registro = new MvcController();
+    $registro = new MvcControllerMateria();
     $registro->registroMateriaController();
 
     //Verificar la URL correcta

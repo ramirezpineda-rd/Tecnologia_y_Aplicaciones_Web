@@ -2,9 +2,9 @@
 class Paginas{
 	public function enlacesPaginasModel($enlaces){
 		if($enlaces == "ingresar" || $enlaces == "usuarios" || $enlaces == "editar" || $enlaces == "salir"
-		|| $enlaces == "carreras" || $enlaces == "registrarCarrera" || $enlaces == "editarCarrera" || $enlaces == "materias"
-		|| $enlaces == "registrarMateria" || $enlaces == "editarMateria"){
-			$module =  "view/".$enlaces.".php";
+		|| $enlaces == "carreras" || $enlaces == "editar_carrera" || $enlaces == "materias" || $enlaces == "editar_materia")
+		{ 
+		   $module =  "view/".$enlaces.".php";
 		} 
 		else if($enlaces == "index"){
 			$module ="view/registrar.php";

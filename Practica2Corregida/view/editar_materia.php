@@ -7,12 +7,12 @@
 
 
 ?>
-<h1>EDITAR USUARIO</h1>
+<h1>EDITAR MATERIA</h1>
 <form method="POST">
     <?php
-        $editarUsuario = new MvcController();
-        $editarUsuario -> editarUsuarioController();
-        $editarUsuario -> actualizarUsuarioController();
+        $editarMateria = new MvcController();
+        $editarMateria -> editarMateriaController();
+        $editarMateria -> actualizarMateriaController();
 
     ?>
 
