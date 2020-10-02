@@ -7,7 +7,7 @@
 
 
 <?php
-    $registrodeCarrera = new MvcControllerCarrera();
+    $registrodeCarrera = new MvcController();
     $registrodeCarrera->registroCarreraController();
 
     //Verificar la URL correcta

@@ -9,7 +9,7 @@
 
 
 <?php
-    $registro = new MvcControllerMateria();
+    $registro = new MvcController();
     $registro->registroMateriaController();
 
     //Verificar la URL correcta
