@@ -185,7 +185,7 @@
                  $respuesta = Datos::actualizarCarreraModel($datosController,"carreras");
                  //Recibimos respuesta del modelo para determinar si se llevo a cabo el UPDATE de manera correcta
                  if($respuesta=="success"){
-                     header("location:index.php?action=cambio");
+                     header("location:index.php?action=carreras");
                  }else{
                      echo "error";
                  }                                    
@@ -278,7 +278,7 @@
                  $respuesta = Datos::actualizarMateriaModel($datosController,"materias");
                  //Recibimos respuesta del modelo para determinar si se llevo a cabo el UPDATE de manera correcta
                  if($respuesta=="success"){
-                     header("location:index.php?action=cambio");
+                     header("location:index.php?action=materias");
                  }else{
                      echo "error";
                  }                                    

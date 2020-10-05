@@ -96,12 +96,11 @@
 
         public function registroCarreraModel($datosModel, $tabla){
             //Prepara el modelo para hacer los inserts a la BD
-            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(id_carrera,nombre) VALUES (:id_carrera,:nombre)");
+            $stmt = Conexion::conectar()->prepare("INSERT INTO $tabla(nombre) VALUES :nombre)");
             //Prepare() prepara una sentencia SQL para ser ejecutada por el método PDOStatement::execute.
             
             //bindParam() Vincula el valor de una variable de PHP a un parámetro de sustitución con nombre o signo de interrogacion correspondiente. Es la sentencia usada para preparar un query de SQL.
-            $stmt->bindParam(":id_carrera", $datosModel["id_carrera"], PDO::PARAM_STR); 
-            $stmt->bindParam(":nombre", $datosModel["nombre"], PDO::PARAM_STR); 
+            $stmt->bindParam("carrera", $datosModel["nombre"], PDO::PARAM_STR); 
             
             //Verificar ejecución del Query
             if($stmt->execute()){

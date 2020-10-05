@@ -1,6 +1,6 @@
 <h1>REGISTRAR CARRERA</h1>
 <form method="POST">
-    <input type="text" placeholder="nombre" name="nombreRegistro" required>
+    <input type="text" placeholder="Nombre de la carrera" name="carreraRegistro" required>
     <input type="submit" value="Enviar">
 </form>
 
