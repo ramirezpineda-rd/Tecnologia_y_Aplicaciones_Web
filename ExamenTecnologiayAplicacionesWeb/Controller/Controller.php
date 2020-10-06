@@ -2,7 +2,7 @@
     class MvcController {
         //Método para llamar a la plantilla template
         public function plantilla(){
-            include "view/template.php";
+            include "View/template.php";
         }
         //Método para mostrar los enlaces de la página
         public function enlacesPaginasController(){
@@ -18,7 +18,7 @@
         //Listado, editar, crear, eliminar.
 
         //Método para registro de usuarios
-        public function registroUsuarioControllerExamen(){
+        public function registroUsuarioController(){
             //Almaceno en un array los valores de la vista de registro
             if(isset($_POST["usuarioRegistro"])){       
                 $datosController = array("usuario"=>$_POST["usuarioRegistro"],
@@ -93,7 +93,7 @@
                 <input type="submit" value= "Actualizar">';
         }
         //MÉTODO PARA ACTUALIZAR USUARIOS
-        public function actualizarUsuariosController(){
+        public function actualizarUsuarioController(){
             if(isset($_POST["usuarioEditar"])){
                 //Preparamos un array con los id de el form del controlador 
                 //anterior para ejecutar la actualizacion en un modelo.
@@ -132,12 +132,13 @@
 
         public function registroLibroController(){
         //Almaceno en un array los valores de la vista de registro
-        if(isset($_POST["libroRegistro"])){       
-            $datosController = array("nombre"=>$_POST["nombreRegistro"],
+        if(isset($_POST["registroLibro"])){       
+            $datosController = array("ISBN"=>$_POST["ISBNRegistro"],
+                                     "nombre"=>$_POST["nombreRegistro"],
         							 "autor"=>$_POST["autorRegistro"],
         							 "editorial"=>$_POST["editorialRegistro"],
         							 "edicion"=>$_POST["edicionRegistro"],
-        							 "año"=>$_POST["añoRegistro"]);
+        							 "anio"=>$_POST["anioRegistro"]);
             //Enviamos los parámetros al Modelo para que procese el registro
             $respuesta = Datos::registroLibroModel($datosController, "libros");
 
@@ -145,7 +146,7 @@
             if($respuesta == "success"){
                 header("location:index.php?action=libros");
             }else{
-                //header("location:index.php");    
+                header("location:index.php");    
             }
         }
     }
@@ -159,11 +160,11 @@
                     <td>'.$item["autor"].'</td>
                     <td>'.$item["editorial"].'</td>
                     <td>'.$item["edicion"].'</td>
-                    <td>'.$item["año"].'</td>
+                    <td>'.$item["anio"].'</td>
                     <!--COLUMNA PARA EDITAR -->
-                    <td><a href="index.php?action=editarLibros&id='.$item["id"].'"><button>EDITAR</button></a></td>
+                    <td><a href="index.php?action=editarLibro&id_libro='.$item["id_libro"].'"><button>EDITAR</button></a></td>
                     <!--COLUMNA PARA BORRAR -->
-                    <td><a href="index.php?action=libros&idBorrarLibros='.$item["id"].'"><button>ELIMINAR</button></a></td>   
+                    <td><a href="index.php?action=libros&idBorrarLibro='.$item["id_libro"].'"><button>ELIMINAR</button></a></td>   
                 </tr>';
 
             }
@@ -171,35 +172,40 @@
 
          public function editarLibroController(){
             //Solicitar el id del libro a editar
-            $datosController = $_GET["id_libros"];
+            $datosController = $_GET["id_libro"];
             //Enviamos al modelo el id para hacer la consulta y obtener sus datos
             $respuesta = Datos::editarLibroModel($datosController, "libros");
             //Recibimos respuesta del modelo e IMPRIMIMOS UNA FORM PARA EDITAR
-            echo'<input type="hidden" value="'.$respuesta["id_libros"].'"
-                name="id_librosEditar">
+            echo'<input type="hidden" value="'.$respuesta["id_libro"].'"
+                name="id_libroEditar">
                 <input type="text" value ="'.$respuesta["ISBN"].'"
-                name="carreraEditar" required>
+                name="ISBNEditar" required>
                 <input type="text" value ="'.$respuesta["nombre"].'"
-                name="carreraEditar" required>
+                name="nombreEditar" required>
                 <input type="text" value ="'.$respuesta["autor"].'"
-                name="carreraEditar" required>
+                name="autorEditar" required>
                 <input type="text" value ="'.$respuesta["editorial"].'"
-                name="carreraEditar" required>
+                name="editorialEditar" required>
                 <input type="text" value ="'.$respuesta["edicion"].'"
-                name="carreraEditar" required>
-                <input type="text" value ="'.$respuesta["año"].'"
-                name="carreraEditar" required>
+                name="edicionEditar" required>
+                <input type="text" value ="'.$respuesta["anio"].'"
+                name="anioEditar" required>
                 <input type="submit" value= "Actualizar">';
         }
 
+        //nombre, autor, editorial, edición y año
         public function actualizarLibroController(){
-            if(isset($_POST["libroEditar"])){
+            if(isset($_POST["registroLibroEditar"])){
                 //Preparamos un array con los id de el form del controlador 
                 //anterior para ejecutar la actualizacion en un modelo.
-                $datosController=array("id_libros"=>$_POST["id_librosEditar"],
-                                        "libros"=>$_POST["librosEditar"]);
+                $datosController=array("id_libro"=>$_POST["id_libroEditar"],
+                                        "nombre"=>$_POST["nombreEditar"],
+                                        "autor"=>$_POST["autorEditar"],
+                                        "editorial"=>$_POST["editorialEditar"],
+                                        "edicion"=>$_POST["edicionEditar"],
+                                        "anio"=>$_POST["anioEditar"],);
                 //Enviar el array a el modelo que generara el UPDATE
-                $respuesta = Datos::actualizarCarreraModel($datosController,"libros");
+                $respuesta = Datos::actualizarLibroModel($datosController,"editarLibro");
                 //Recibimos respuesta del modelo para determinar si se llevo a cabo el UPDATE de manera correcta
                 if($respuesta=="success"){
                     header("location:index.php?action=libros");
@@ -213,11 +219,14 @@
             if(isset($_GET["idBorrarLibros"])){
                 $datosController = $_GET["idBorrarLibros"];
                     //Mandar ID  al controlador para que ejecute el DELETE.
-                $respuesta = Datos::borrarCarreraModel($datosController, "libros");
+                $respuesta = Datos::borrarLibroModel($datosController, "libros");
 
-                //Recibimos la respuesta del modelo de eliminación 
-                if($respuesta == "success"){
+            //Recibimos la respuesta del modelo de eliminación 
+            if($respuesta == "success"){
                     header("location:index.php?action=libros");
-                }
+            }
             }
         }
+
+    }
+?>

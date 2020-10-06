@@ -1,0 +1,13 @@
+
+body{
+    margin: 0;
+    padding: 0;
+}
+
+.fondo{
+    background-image: url('../img/Libro.jpg');
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center ;
+}
