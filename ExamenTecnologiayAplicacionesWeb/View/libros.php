@@ -10,12 +10,12 @@
 
 <h1>REGISTRAR LIBRO</h1>
 <form method="POST">
-    <input type="text" placeholder="ISBN" name="ISBNRegistro" required>
-    <input type="text" placeholder="nombre" name="nombreRegistro" required>
-    <input type="text" placeholder="autor" name="autorRegistro" required>
-    <input type="text" placeholder="editorial" name="editorialRegistro" required>
-    <input type="text" placeholder="edicion" name="edicionRegistro" required>
-    <input type="text" placeholder="año" name="añoRegistro" required>
+    <input type="int" placeholder="ISBN" name="ISBNRegistro" required>
+    <input type="varchar" placeholder="nombre" name="nombreRegistro" required>
+    <input type="varchar" placeholder="autor" name="autorRegistro" required>
+    <input type="varchar" placeholder="editorial" name="editorialRegistro" required>
+    <input type="varchar" placeholder="edicion" name="edicionRegistro" required>
+    <input type="varchar" placeholder="anio" name="anioRegistro" required>
     <input type="submit" value="Enviar">
 </form>
 

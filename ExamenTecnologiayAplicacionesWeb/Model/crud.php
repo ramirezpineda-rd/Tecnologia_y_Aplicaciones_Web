@@ -130,7 +130,7 @@
         //Método para SELECCIONAR usuarios
         public function editarLibroModel($datosModel, $tabla){
             $stmt = Conexion::conectar()->prepare("SELECT id_libro, ISBN, nombre, autor, editorial, edicion, anio FROM $tabla
-            where id_libro = :id_libro");
+            WHERE id_libro = :id_libro");
             $stmt->bindParam(":id_libro", $datosModel, PDO::PARAM_INT);
             $stmt->execute();
             return $stmt->fetch();
