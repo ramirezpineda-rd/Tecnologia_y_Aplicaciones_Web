@@ -1382,9 +1382,9 @@
 <!-- Bootstrap Switch -->
 <script src="{{asset('/plugins/bootstrap-switch/js/bootstrap-switch.min.js')}}"></script>
 <!-- AdminLTE App -->
-<script src="{{asset('/dist/js/adminlte.min.js')}}"></script>
+<script src="dist/js/adminlte.min.js"></script>
 <!-- AdminLTE for demo purposes -->
-<script src="{{asset('/dist/js/demo.js')}}"></script>
+<script src="dist/js/demo.js"></script>
 <!-- Page script -->
 <script>
   $(function () {

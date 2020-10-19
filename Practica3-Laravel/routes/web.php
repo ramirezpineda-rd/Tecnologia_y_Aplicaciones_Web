@@ -23,9 +23,9 @@ Route::get('/principal', function () {
 });
 
 //ruta para redirigir a index secundario
-/*Route::get('/secundario', function () {
+Route::get('/secundario', function () {
     return view('secundario');
-});*/
+});
 
 //ruta para redirigir a formulario
 Route::get('/formulario', function () {
@@ -33,8 +33,8 @@ Route::get('/formulario', function () {
 });
 
 //ruta para redirigir a tablas de datos, dentro de index
-/*Route::get('/DataTables', function () {
+Route::get('/DataTables', function () {
     return view('DataTables');
-});*/
+});
 
 ?>
