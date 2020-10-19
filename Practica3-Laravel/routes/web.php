@@ -27,6 +27,11 @@ Route::get('/secundario', function () {
     return view('secundario');
 });
 
+//ruta para redirigir a index tercero
+Route::get('/tercero', function () {
+    return view('tercero');
+});
+
 //ruta para redirigir a formulario
 Route::get('/formulario', function () {
     return view('formulario');
