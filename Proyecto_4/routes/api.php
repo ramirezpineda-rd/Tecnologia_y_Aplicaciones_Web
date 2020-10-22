@@ -17,3 +17,8 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+
+//Ruta para invocar el controlador con el array de las recetas
+
+route::get('/ruta','App\Http\Controllers\RecetaController');
