@@ -9,16 +9,23 @@ class RecetaController extends Controller
     //
     public function __invoke()
     {
-        $receta = [
-            'nombre' => 'Pizza Hawaina',
-            'descripcion' => 'Rica pizza de X marca'
-        ];
+        //Consulta N. 1, envio del array 'recetas' a la vista:
+        $recetas = ['Receta de fresa', 'Receta de uva', 'Receta de limon'];
 
-        return $receta;
+        //Consulta N. 2, envio del array 'categorias' a la vista:
+        $categorias = ['Comida mexicana', 'Comida argentina', 'Postres'];
+
+        //Pasar a la vista el array (sintaxis 1):
+        
+        
+        //Retornar a la vista recetas/index
+        return view('recetas.index')
+                ->with('recetas', $recetas)
+                ->with('categorias', $categorias);
                 
 
         //Pasar a la vista el array (sintaxis 2):
-        //return view ('recetas.index, compact ('recetas', 'categorias'))
+        //return view ('recetas.index', compact ('recetas','categorias'));
             
     }
 }

@@ -21,4 +21,10 @@ Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Route::get('/hola','App\Http\Controllers\RecetaController');
+//Route::get('/hola','App\Http\Controllers\RecetaController');
+
+//Ruta para consumir un controller llamado recetas.
+
+Route::get('/recetas','App\Http\Controllers\RecetaController');
+
+
