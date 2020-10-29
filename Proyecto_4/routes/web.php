@@ -25,6 +25,22 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 
 //Ruta para consumir un controller llamado recetas.
 
-Route::get('/recetas','App\Http\Controllers\RecetaController');
+//Route::get('/recetas','App\Http\Controllers\RecetaController');
+
+//Ruta controlador de recetas, retornando el método index.
+Route::get('/recetas','App\Http\Controllers\Receta2Controller@index')->name('recetas.index');//Alias para el metodo index
+
+//Ruta controlador de recetas, retornando el método create.
+Route::get('/recetas/create','App\Http\Controllers\Receta2Controller@create')->name('recetas.create');//Alias para el metodo create
+
+//Ruta controlador de recetas, retornando el método store.
+Route::post('/recetas','App\Http\Controllers\Receta2Controller@store')->name('recetas.store');//Alias para el metodo create
+
+
+//Route::get('/recetas/listado','Receta2Controller@index');
+//Route::get('/recetas/crear', 'Receta2Controller@create');
+//Route::get('/recetas/eliminar', 'Receta2Controller@destroy');
+
+
 
 
