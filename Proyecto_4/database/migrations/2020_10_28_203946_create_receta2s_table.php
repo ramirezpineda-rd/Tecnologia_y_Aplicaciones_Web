@@ -11,12 +11,23 @@ class CreateReceta2sTable extends Migration
      *
      * @return void
      */
-    public function up()
+    /*public function up()
+    {
+        Schema::create('categoria')
+    }*/
+
+
     {
         Schema::create('receta2s', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
+            $table->text('ingredientes');
+            $table->text('preparación');
+            $table->('imagen');
             $table->timestamps();
+
+            //Agregamos que el ID de usuario que viene 
+            $table->foreignId('user_id')->references
         });
     }
 

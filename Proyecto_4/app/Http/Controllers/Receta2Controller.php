@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class Receta2Controller extends Controller
 {
+
+    //Validar
     /**
      * Display a listing of the resource.
      *
@@ -26,8 +28,14 @@ class Receta2Controller extends Controller
      */
     public function create()
     {
+        //Creamos una consulta a la bd sobre las categorias de las recetas
+        DB::table('categoria_receta')->get()->pluck('nombre','id')->dd();
+        
+        //Esta consulta retorna un array con los elementos de la tarjeta de la tabla categoria
+
+
         //Manda a la vista del formulario.
-        return view('recetas.create');
+        return view('recetas.create')->with('categorias',$categorias);
     }
 
     /**
@@ -39,7 +47,10 @@ class Receta2Controller extends Controller
     public function store(Request $request)
     {
 
-        $data=request();
+        $data=request()->validate([
+            //Reglas de validacion: para que se pueda agregar receta
+            "titulo"=>'required|min:6'
+        ]);
 
         //Facade de Laravel para insertar un registro a la base de datos.
         DB::table('recetas')->insert([
