@@ -9,6 +9,9 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!--Definir el yield de estilos para la integracion del editor Trix -->
+    @yield('styles')
+    
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
@@ -84,5 +87,7 @@
         </div>
         
     </div>
+    <!--Definir el yield  de scripts para la integracion del editor Trix-->
+    @yield('scripts')
 </body>
 </html>

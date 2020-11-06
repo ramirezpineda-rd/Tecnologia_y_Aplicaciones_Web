@@ -3,13 +3,19 @@
 namespace App\Http\Controllers;
 
 use App\Models\Receta2;
-use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Http\Request;
+
 
 class Receta2Controller extends Controller
 {
 
-    //Validar
+    //Validar la restriccion a todos los metodos de usuario autenticado
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+    
     /**
      * Display a listing of the resource.
      *
@@ -29,7 +35,7 @@ class Receta2Controller extends Controller
     public function create()
     {
         //Creamos una consulta a la bd sobre las categorias de las recetas
-        DB::table('categoria_receta')->get()->pluck('nombre','id')->dd();
+        $categorias = DB::table('categoria_receta')->get()->pluck('nombre','id');
         
         //Esta consulta retorna un array con los elementos de la tarjeta de la tabla categoria
 
@@ -49,7 +55,11 @@ class Receta2Controller extends Controller
 
         $data=request()->validate([
             //Reglas de validacion: para que se pueda agregar receta
-            "titulo"=>'required|min:6'
+            'titulo'=>'required|min:6',//tamanio mminimo que se requiere de titulo
+            'categoria'=>'required',
+            'preparacion'=>'required',
+            'ingredientes'=>'erquired',
+            'imagen'=>'required|iamge|size:2000',
         ]);
 
         //Facade de Laravel para insertar un registro a la base de datos.
@@ -60,15 +70,17 @@ class Receta2Controller extends Controller
         //Almacena la receta a la base de datos
         //dd($request->all());
 
+        return redirect('recetas/create')->with('alertas','La receta a sido agregada a la base de datos');
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Receta2  $receta2
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show(Receta2 $receta2)
+    public function show($id)
     {
         //
     }
@@ -76,10 +88,10 @@ class Receta2Controller extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Receta2  $receta2
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Receta2 $receta2)
+    public function edit($id)
     {
         //
     }
@@ -88,10 +100,10 @@ class Receta2Controller extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Receta2  $receta2
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Receta2 $receta2)
+    public function update(Request $request, $id)
     {
         //
     }
@@ -99,10 +111,10 @@ class Receta2Controller extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Receta2  $receta2
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Receta2 $receta2)
+    public function destroy($id)
     {
         //
     }

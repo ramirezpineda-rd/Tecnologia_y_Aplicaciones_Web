@@ -12,7 +12,7 @@
             <thead class="bg-primary text-light">
                 <tr>
                     <th scole="col">Titulo</th>
-                    <th scole="col">Categoría</th>
+                    <th scole="col">Categorías</th>
                     <th scole="col">Acciones</th>
                 </tr>
             </thead>
