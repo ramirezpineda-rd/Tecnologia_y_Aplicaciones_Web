@@ -13,29 +13,30 @@ class CreateRecetasTable extends Migration
      */
     public function up()
     {
-        Schema::create('recetas', function (Blueprint $table) {
+        //Crear Schema de la tabla categorias: 
+
+        Schema::create('categoria_receta', function (Blueprint $table) {
             $table->id();
             $table->string('nombre');
+
             $table->timestamps();
         });
-
+        
+        
         Schema::create('receta2s', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
             $table->text('ingredientes');
-            $table->text('preparación');
+            $table->text('preparacion');
             $table->string('imagen');
-            $table->timestamps();
+            //Agregamos el ID de usuario que viene de la tabla de usuarios e inserta la receta
+            $table->foreignId('user_id')->references('id')->on('users')->comment('El usuario que crea la receta');
 
-            //Agregamos que el ID de usuario que viene de la tabla de usuarios e inserta la receta 
-            $table->foreignId('user_id')->references('id')->on('users')->comment('El usaurio crea la receta');
-           
-            //Agregamos el ID de la categoría que viene de la tabla de categoría
+            //Agregamos el ID de la cateogoria que viene de la tabla de categoria
             $table->foreignId('categoria_id')->references('id')->on('categoria_receta')->comment('La categoria de la receta');
-
+            
             $table->timestamps();
         });
-
     }
 
     /**

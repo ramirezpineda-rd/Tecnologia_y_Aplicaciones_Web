@@ -18,7 +18,7 @@ class UsuarioSeeder extends Seeder
         //Insertar datos por default a la tabla usuarios
         DB::table('users')->insert([
             'name'=>'Mario Rdz',
-            'email'=>'correo1@correo.com',
+            'email'=>'correo2@correo.com',
             'password'=>Hash::make('12345678'),
             'url'=>'www.upv.com',
             'created_at'=>date('Y-m-d H:i:s'),

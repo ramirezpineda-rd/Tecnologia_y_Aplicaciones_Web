@@ -22,14 +22,14 @@ class CreateReceta2sTable extends Migration
     
 
 
-    
+        //Tabla de recetas.
         Schema::create('receta2s', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
             $table->text('ingredientes');
-            $table->text('preparación');
+            $table->text('preparacion');
             $table->string('imagen');
-            $table->timestamps();
+           
 
             //Agregamos que el ID de usuario que viene de la tabla de usuarios e inserta la receta 
             $table->foreignId('user_id')->references('id')->on('users')->comment('El usaurio crea la receta');

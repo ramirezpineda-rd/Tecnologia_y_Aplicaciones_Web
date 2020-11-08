@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Receta2;
+use App\Models\Recetas2;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
@@ -58,19 +58,30 @@ class Receta2Controller extends Controller
             'titulo'=>'required|min:6',//tamanio mminimo que se requiere de titulo
             'categoria'=>'required',
             'preparacion'=>'required',
-            'ingredientes'=>'erquired',
-            'imagen'=>'required|iamge|size:2000',
+            'ingredientes'=>'required',
+            'imagen'=>'required|image|size:2000',
         ]);
 
+        //Obtener la ruta de la imagen
+        $ruta_imagen = $request['imagen']->store('uploads-recetas','public');
+
         //Facade de Laravel para insertar un registro a la base de datos.
+        //Almacenamos en la bd (sin modelo)
         DB::table('recetas')->insert([
-            'titulo'=>$data['titulo']
+            'titulo'=>$data['titulo'],
+            'categoria_id'=>data[categoria],
+            'preparacion'=>$data['preparacion'],
+            'ingredientes'=>$data['ingredientes'],
+            'imagen'=>1,
+            //Determinamos el usuario autenticado (importamos la clase Auth)
+            'user_id'=>Auth::user()->id
         ]); 
 
         //Almacena la receta a la base de datos
         //dd($request->all());
 
-        return redirect('recetas/create')->with('alertas','La receta a sido agregada a la base de datos');
+        //Redireccionar
+        return redirect()->action('receta2Controller@index');
 
     }
 
