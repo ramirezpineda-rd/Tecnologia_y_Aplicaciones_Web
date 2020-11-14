@@ -6,6 +6,8 @@ use App\Models\Receta2;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+//Modelo Receta2
+//use App\Receta2;
 
 
 class Receta2Controller extends Controller
@@ -55,7 +57,7 @@ class Receta2Controller extends Controller
     {
         //Accedemos a un campo del $request y lo almacenamos con store y la ruta
         // de guardado
-            dd($request['imagen']-> store('uploads-recetas','public'));
+        dd($request['imagen']-> store('uploads-recetas','public'));
 
         $data=request()->validate([
             //Reglas de validacion: para que se pueda agregar receta
@@ -83,6 +85,15 @@ class Receta2Controller extends Controller
 
         //Almacena la receta a la base de datos
         //dd($request->all());
+
+        //Almacenar en la BD (con modelo) recetas por usuario
+        /*auth()->user()->recetas()->create([
+            'titulo'=>$data['titulo'],
+            'preparacion'=>$data['preparacion'],
+            'ingredientes'=>$data['ingredientes'],
+            'imagen'=>$ruta_imagen,
+            'categoria_id'=>$data['categoria']
+        ]);*/
 
         //Redireccionar
         return redirect()->action('receta2Controller@index');
