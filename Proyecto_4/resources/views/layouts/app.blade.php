@@ -9,7 +9,7 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-    <!--Definir el yield de estilos para la integracion del editor Trix -->
+    <!--Definimos el yield de estilos para la integracion de Trix editor -->
     @yield('styles')
     
     <!-- Scripts -->

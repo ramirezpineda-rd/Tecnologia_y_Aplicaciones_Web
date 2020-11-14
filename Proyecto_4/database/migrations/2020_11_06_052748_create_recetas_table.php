@@ -23,7 +23,7 @@ class CreateRecetasTable extends Migration
         });
         
         
-        Schema::create('receta2s', function (Blueprint $table) {
+        Schema::create('recetas', function (Blueprint $table) {
             $table->id();
             $table->string('titulo');
             $table->text('ingredientes');

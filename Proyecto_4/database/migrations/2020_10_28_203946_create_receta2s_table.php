@@ -21,7 +21,6 @@ class CreateReceta2sTable extends Migration
         });
     
 
-
         //Tabla de recetas.
         Schema::create('receta2s', function (Blueprint $table) {
             $table->id();
@@ -32,7 +31,7 @@ class CreateReceta2sTable extends Migration
            
 
             //Agregamos que el ID de usuario que viene de la tabla de usuarios e inserta la receta 
-            $table->foreignId('user_id')->references('id')->on('users')->comment('El usaurio crea la receta');
+            $table->foreignId('user_id')->references('id')->on('users')->comment('El usaurio que crea la receta');
            
             //Agregamos el ID de la categoría que viene de la tabla de categoría
             $table->foreignId('categoria_id')->references('id')->on('categoria_receta')->comment('La categoria de la receta');
@@ -50,6 +49,6 @@ class CreateReceta2sTable extends Migration
     public function down()
     {
         Schema::dropIfExists('categoria_receta');
-        Schema::dropIfExists('recetas');
+        Schema::dropIfExists('receta2s');
     }
 }
