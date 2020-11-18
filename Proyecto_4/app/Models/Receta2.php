@@ -11,7 +11,7 @@ class Receta2 extends Model
     use HasFactory;
 
     //Campos que se agregan
-    /*protected $fillable = [
+    protected $fillable = [
         'titulo', 'preparacion', 'ingredientes', 'imagen', 'categoria_id'
     ];
 
@@ -26,6 +26,12 @@ class Receta2 extends Model
     public function autor()
     {
         return $this->belongsTo(User::class, 'user_id');//FK de esta tabla
-    }*/
+    }
+
+    // Likes que ha recibido una receta
+    public function likes()
+    {
+        return $this->belongsToMany(User::class, 'likes_receta');
+    }
 
 }

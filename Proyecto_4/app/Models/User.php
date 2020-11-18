@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Models;
+namespace App;
 
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
@@ -42,7 +43,13 @@ class User extends Authenticatable
         'email_verified_at' => 'datetime',
     ];
 
-    /*//Evento que se ejecuta cuando un usuario es creado
+    //Relacion de 1:n de Usuario a Recetas
+    public function recetas()
+    {
+        return $this->hasMany(Receta2::class);
+    }
+
+    //Evento que se ejecuta cuando un usuario es creado
     protected static function boot()
     {
         parent::boot();
@@ -53,18 +60,25 @@ class User extends Authenticatable
             $user->perfil()->create();
 
         });
-
     }
 
     //Relación 1:n de Usuario a Recetas
-    public function recetas()
+    public function receta2()
     {
         return $this->hasMany(Receta2::class);
     }
-
+   
+    
     //Relación 1:1 de usuario y perfíl
     public function perfil()
     {
         return $this->hasOne(Perfil::class);
-    }*/
+    }
+
+     // Recetas que el usuario le ha dado me gusta
+     public function meGusta()
+     {
+         return $this->belongsToMany(Receta::class, 'likes_receta');
+     }
+
 }

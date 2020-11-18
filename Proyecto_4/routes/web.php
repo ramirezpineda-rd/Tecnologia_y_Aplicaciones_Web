@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -34,8 +35,37 @@ Route::get('/recetas','App\Http\Controllers\Receta2Controller@index')->name('rec
 Route::get('/recetas/create','App\Http\Controllers\Receta2Controller@create')->name('recetas.create');//Alias para el metodo create
 
 //Ruta controlador de recetas, retornando el método store.
-Route::post('/recetas','App\Http\Controllers\Receta2Controller@store')->name('recetas.store');//Alias para el metodo create
+Route::post('/recetas','App\Http\Controllers\Receta2Controller@store')->name('recetas.store');//Alias para el metodo store
 
+//Ruta controlador para mostrar las recetas
+Route::get('/recetas', 'App\Http\Controllers\Receta2Controller@show')->name('recetas.show');
+
+//Ruta controlador para mostrar las ediciones.
+Route::get('/recetas', 'App\Http\Controllers\Receta2Controller@edit')->name('recetas.edit');
+
+//Ruta controlador para mostrar las actualizaciones.
+Route::put('/recetas', 'App\Http\Controllers\Receta2Controller@update')->name('recetas.update');
+
+//Ruta controlador para eliminar recetas
+Route::delete('/recetas', 'App\Http\Controllers\Receta2Controller@destroy')->name('recetas.destroy');
+
+//Ruta controlador para mostrar las categorias
+Route::get('/categorias', 'App\Http\Controllers\CategoriasController@show')->name('categorias.show');
+
+//Buscador de Recetas
+Route::get('/buscar', 'App\Http\Controllers\RecetaController@search')->name('buscar.show');
+
+//Buscador de perfiles
+Route::get('/perfiles','App\Http\Controllers\PerfilController@show')->name('perfiles.show');
+
+//Buscador para editar perfiles
+Route::get('/perfiles/edit','App\Http\Controllers\PerfilController@edit')->name('perfiles.edit');
+
+//Buscador para actualizar perfiles
+Route::put('/perfiles','App\Http\Controllers\PerfilController@update')->name('perfiles.update');
+
+//Almacenar los likes de las recetas
+Route::post('/recetas','App\Http\Controllers\LikesController@update')->name('likes.update');
 
 //Route::get('/recetas/listado','Receta2Controller@index');
 //Route::get('/recetas/crear', 'Receta2Controller@create');
