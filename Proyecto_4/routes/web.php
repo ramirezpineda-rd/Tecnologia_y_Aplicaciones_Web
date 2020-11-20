@@ -29,25 +29,25 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 //Route::get('/recetas','App\Http\Controllers\RecetaController');
 
 //Ruta controlador de recetas, retornando el método index.
-Route::get('/recetas','App\Http\Controllers\Receta2Controller@index')->name('recetas.index');//Alias para el metodo index
+Route::get('/recetas','App\Http\Controllers\RecetaController@index')->name('recetas.index');//Alias para el metodo index
 
 //Ruta controlador de recetas, retornando el método create.
-Route::get('/recetas/create','App\Http\Controllers\Receta2Controller@create')->name('recetas.create');//Alias para el metodo create
+Route::get('/recetas/create','App\Http\Controllers\RecetaController@create')->name('recetas.create');//Alias para el metodo create
 
 //Ruta controlador de recetas, retornando el método store.
-Route::post('/recetas','App\Http\Controllers\Receta2Controller@store')->name('recetas.store');//Alias para el metodo store
+Route::post('/recetas','App\Http\Controllers\RecetaController@store')->name('recetas.store');//Alias para el metodo store
 
 //Ruta controlador para mostrar las recetas
-Route::get('/recetas', 'App\Http\Controllers\Receta2Controller@show')->name('recetas.show');
+Route::get('/recetas', 'App\Http\Controllers\RecetaController@show')->name('recetas.show');
 
 //Ruta controlador para mostrar las ediciones.
-Route::get('/recetas', 'App\Http\Controllers\Receta2Controller@edit')->name('recetas.edit');
+Route::get('/recetas', 'App\Http\Controllers\RecetaController@edit')->name('recetas.edit');
 
 //Ruta controlador para mostrar las actualizaciones.
-Route::put('/recetas', 'App\Http\Controllers\Receta2Controller@update')->name('recetas.update');
+Route::put('/recetas', 'App\Http\Controllers\RecetaController@update')->name('recetas.update');
 
 //Ruta controlador para eliminar recetas
-Route::delete('/recetas', 'App\Http\Controllers\Receta2Controller@destroy')->name('recetas.destroy');
+Route::delete('/recetas', 'App\Http\Controllers\RecetaController@destroy')->name('recetas.destroy');
 
 //Ruta controlador para mostrar las categorias
 Route::get('/categorias', 'App\Http\Controllers\CategoriasController@show')->name('categorias.show');

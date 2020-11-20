@@ -46,7 +46,7 @@ class User extends Authenticatable
     //Relacion de 1:n de Usuario a Recetas
     public function recetas()
     {
-        return $this->hasMany(Receta2::class);
+        return $this->hasMany(Receta::class);
     }
 
     //Evento que se ejecuta cuando un usuario es creado
@@ -63,9 +63,9 @@ class User extends Authenticatable
     }
 
     //Relación 1:n de Usuario a Recetas
-    public function receta2()
+    public function receta()
     {
-        return $this->hasMany(Receta2::class);
+        return $this->hasMany(Receta::class);
     }
    
     

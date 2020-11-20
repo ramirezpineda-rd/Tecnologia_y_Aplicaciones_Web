@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Receta2;
+use App\Receta;
 use App\CategoriaReceta;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
@@ -15,10 +15,10 @@ class InicioController extends Controller
 
         // Mostrar las recetas por cantidad de votos
         // $votadas = Receta::has('likes', '>', 0)->get();
-        $votadas = Receta2::withCount('likes')->orderBy('likes_count', 'desc')->take(3)->get();
+        $votadas = Receta::withCount('likes')->orderBy('likes_count', 'desc')->take(3)->get();
 
         // Obtener las recetas mas nuevas
-        $nuevas = Receta2::latest()->take(6)->get();
+        $nuevas = Receta::latest()->take(6)->get();
 
         // obtener todas las categorias
         $categorias = CategoriaReceta::all();

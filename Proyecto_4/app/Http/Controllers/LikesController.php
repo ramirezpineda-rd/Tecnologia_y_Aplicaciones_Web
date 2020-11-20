@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Receta2;
+use App\Receta;
 use Illuminate\Http\Request;
 
 class LikesController extends Controller

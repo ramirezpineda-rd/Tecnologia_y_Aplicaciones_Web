@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Perfil;
-use App\Receta2;
+use App\Receta;
 use Illuminate\Http\Request;
 use Intervention\Image\Facades\Image;
 
@@ -98,7 +98,7 @@ class PerfilController extends Controller
 
 
         // redireccionar
-        return redirect()->action('Receta2Controller@index');
+        return redirect()->action('RecetaController@index');
     }
 
 }
