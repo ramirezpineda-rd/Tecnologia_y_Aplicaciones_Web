@@ -2,8 +2,9 @@
 
 namespace Database\Seeders;
 
+use App\Models\User;
 use Illuminate\Database\Seeder;
-use Illuminate\Support\Facades\DB;
+
 use Illuminate\Support\Facades\Hash;
 
 class UsuarioSeeder extends Seeder
@@ -15,24 +16,22 @@ class UsuarioSeeder extends Seeder
      */
     public function run()
     {
-        //Insertar datos por default a la tabla usuarios
-        DB::table('users')->insert([
-            'name'=>'Mario Rdz',
-            'email'=>'correo2@correo.com',
-            'password'=>Hash::make('12345678'),
-            'url'=>'www.upv.com',
-            'created_at'=>date('Y-m-d H:i:s'),
-            'updated_at'=>date('Y-m-d H:i:s'),
-        ]);
-
-        DB::table('users')->insert([
+        //Para crear dinamicamente a los usuarios
+        $user = User::create([
             'name'=>'Ruben Dario',
             'email'=>'correo1@correo.com',
             'password'=>Hash::make('12345678'),
             'url'=>'www.upv.com',
-            'created_at'=>date('Y-m-d H:i:s'),
-            'updated_at'=>date('Y-m-d H:i:s'),
         ]);
+      
+
+        $user2 = User::create([
+            'name'=>'Mario Rdz',
+            'email'=>'correo2@correo.com',
+            'password'=>Hash::make('12345678'),
+            'url'=>'www.upv.com',
+        ]);
+    
 
     }
 }

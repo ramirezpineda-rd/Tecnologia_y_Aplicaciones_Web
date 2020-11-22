@@ -42,7 +42,27 @@ Route::put('/recetas/{receta}','App\Http\Controllers\RecetaController@update')->
 //Ruta controlador de recetas, retornando el método destroy.
 Route::delete('/recetas/{receta}','App\Http\Controllers\RecetaController@destroy')->name('recetas.destroy');
 
-Route::get('/categoria/{categoriaReceta}','App\Http\Controllers\CategoriaController@show')->name('categorias.show'); 
+//Se pueden simplicar las rutas de las recetas.
+//Route::resource('recetas',''App\Http\Controllers\RecetaController');
+
+
+
+
+//Ruta controlador de perfiles para mostrar los diferentes perfiles creados.
+Route::get('/perfiles/{perfil}','App\Http\Controllers\PerfilController@show')->name('perfiles.show');
+
+//Ruta controlador de perfiles para editar los perfiles creados.
+Route::get('/perfiles/{perfil}/edit','App\Http\Controllers\PerfilController@edit')->name('perfiles.edit');
+
+//Ruta controlador de perfiles para actualizar los perfiles creados.
+Route::put('/perfiles/{perfil}/','App\Http\Controllers\PerfilController@update')->name('perfiles.update');
+
+//Ruta controlador de receta para ver los likes creados.//Petición para almacenar el like.
+Route::post('/recetas/{receta}/','App\Http\Controllers\LikesController@update')->name('likes.update');
+
+
+//
+//Route::get('/categoria/{categoriaReceta}','App\Http\Controllers\CategoriaController@show')->name('categorias.show'); 
 
 
 

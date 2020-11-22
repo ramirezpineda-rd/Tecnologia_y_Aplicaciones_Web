@@ -1,5 +1,11 @@
 
-.navbar-brand{
+
+trix-editor{
+    min-height: 400px;
+    height: auto!important;
+}
+
+.bg-primary navbar-brand{
     color: red;
     font-family: $font-family-sans-serif;
     font-size: 2rem;

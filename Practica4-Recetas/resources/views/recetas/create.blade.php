@@ -28,7 +28,7 @@
                         class="form-control @error('titulo') is-invalid @enderror "
                         id="titulo"
                         placeholder="Titulo Receta"
-                        value={{ old('titulo') }}
+                        value="{{ old('titulo') }}"
                     >
 
                     <!--Directiva de Laravel para poner un mensaje de error-->
@@ -54,11 +54,11 @@
                     >
 
                         <option value="">--Seleccione-</option>
-                        @foreach($categorias as $id => $categoria)
+                        @foreach($categorias as $categoria)
                             <option 
-                                value="{{$id}}"
-                                {{ old('categoria') == $id ? 'selected' : ''}}
-                            >{{$categoria}}</option>
+                                value="{{$categoria->id}}"
+                                {{ old('categoria') == $categoria->id ? 'selected' : ''}}
+                            >{{$categoria->nombre}}</option>
                          @endforeach
                     </select>
         
@@ -73,7 +73,7 @@
                 </div>
 
                 <!--Final del select-->
-
+                
                 <!--Inicio campo de texto de Preparacion con Trix"-->
                 <div class="form-group mt-3">
                     <label for="preparacion"> Preparación</label>
@@ -86,10 +86,12 @@
                         class="form-control @error('preparacion') is-invalid @enderror"
                         input="preparacion"
                     ></trix-editor>
+                    
                     <!--Validación con mensaje de error-->
                     @error('preparacion')
                         <span class="invalid-feedback d-block" role="alert">
-                        <!--ponemos un mensaje generado por laravel-->
+                        
+                            <!--ponemos un mensaje generado por laravel-->
                             <strong> {{$message}}</strong>
                         </span>
                     @enderror
@@ -147,7 +149,8 @@
 <!---Definir la seccion de los script de editor Trix-->
 
 @section('scripts')
-<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.js" integrity="sha512-S9EzTi2CZYAFbOUZVkVVqzeVpq+wG+JBFzG0YlfWAR7O8d+3nC+TTJr1KD3h4uh9aLbfKIJzIyTWZp5N/61k1g==" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.3.0/trix.js"
+integrity="sha512-S9EzTi2CZYAFbOUZVkVVqzeVpq+wG+JBFzG0YlfWAR7O8d+3nC+TTJr1KD3h4uh9aLbfKIJzIyTWZp5N/61k1g==" crossorigin="anonymous" defer></script>
 @endsection
 
 @endsection

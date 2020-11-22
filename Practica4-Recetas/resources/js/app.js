@@ -4,6 +4,8 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import VueSweetalert2 from 'vue-sweetalert2';
+
 require('./bootstrap');
 
 window.Vue = require('vue');
@@ -19,7 +21,15 @@ window.Vue = require('vue');
 // const files = require.context('./', true, /\.vue$/i)
 // files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default))
 
-Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+//Vue.component('example-component', require('./components/ExampleComponent.vue').default);
+
+Vue.use(VueSweetalert2);//Para que se pueda usar el ueSweetalert2
+Vue.config.ignoredElements = ['trix-editor','trix-toolbar'];//Trix-editor no es un componente, por lo tanto se debe ignorar.
+Vue.component('fecha-receta', require('./components/FechaReceta.vue').default)//Componente para la fecha de creación de la receta.
+Vue.component('eliminar-receta', require('./components/EliminarReceta.vue').default)//Componente para la eliminación de la receta.
+Vue.component('like-button', require('./components/LikeButton.vue').default)//Componente para la eliminación de la receta.
+
+console.log(Vue.prototype);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -30,3 +40,6 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 const app = new Vue({
     el: '#app',
 });
+
+
+

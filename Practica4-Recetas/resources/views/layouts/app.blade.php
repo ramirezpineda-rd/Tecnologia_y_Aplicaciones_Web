@@ -16,6 +16,7 @@
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
+    @yield('styles')
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
@@ -54,9 +55,28 @@
                         @else
                             <li class="nav-item dropdown">
                                 <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                                    {{ Auth::user()->name }}
+                                    {{ Auth::user()->name }} <span class="caret"></span>
+                                </a>
+                                
+                                <!--Para enviar a ver perfíl-->
+                            
+                                <a class="dropdown-item" href="{{ route('perfiles.show', ['perfil'=>Auth::user()->id]) }}">
+                                    {{'Ver Perfil'}}
                                 </a>
 
+                                
+                                 <!--Para enviar a ver a recetas.index-->
+                            
+                                <a class="dropdown-item" href="{{ route('recetas.index') }}">
+                                    {{'Ver Recetas'}}
+                                </a>
+                                
+                                
+                                
+                                
+                                
+                                
+                                    <!--Para enviar a logout-->
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
