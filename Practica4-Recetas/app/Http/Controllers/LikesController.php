@@ -10,7 +10,7 @@ class LikesController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth');//Se requiere estar autenticado
     }
    
     public function update(Request $request, Receta $receta)

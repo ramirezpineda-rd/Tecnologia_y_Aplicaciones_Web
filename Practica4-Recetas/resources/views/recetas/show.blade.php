@@ -1,7 +1,5 @@
 @extends ('layouts.app')
 
-
-
 @section('content')
 
     {{-- <h1>{{ $receta}}</h1> --}}
@@ -53,12 +51,12 @@
                 {!! $receta->preparacion !!}
             </div>
 
-            <div class="justify-content-center row text-center">
+            <div class="justify-content-center row text-center"><!--clase de boostrap-->
                 <like-button
                     receta-id="{{$receta->id}}"
                     like="{{$like}}"
                     likes="{{$likes}}"
-                ></like-button>
+                ></like-button><!--Se pasa el like al componente -->
             </div>
 
 

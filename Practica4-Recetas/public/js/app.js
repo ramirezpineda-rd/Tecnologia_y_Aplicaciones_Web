@@ -2006,12 +2006,14 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['recetaId', 'like', 'likes'],
   data: function data() {
     return {
       isActive: this.like,
-      totalLikes: this.likes
+      totalLikes: this.likes //se encarga de mostrar cuantos likes contiene la receta
+
     };
   },
   methods: {
@@ -2020,12 +2022,13 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.post('/recetas/' + this.recetaId).then(function (respuesta) {
         if (respuesta.data.attached.length > 0) {
-          _this.$data.totalLikes++;
+          _this.$data.totalLikes++; //Para acceder al data
         } else {
-          _this.$data.totalLikes--;
+          _this.$data.totalLikes--; //Cuando le quitan el meGusta
         }
 
-        _this.isActive = !_this.isActive;
+        _this.isActive = !_this.isActive; //Se requiere el this, si es como true pasa false,
+        //se esta como false pasa true.
       })["catch"](function (error) {
         if (error.response.status === 401) {
           window.location = '/register';
@@ -2035,7 +2038,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   computed: {
     cantidadLikes: function cantidadLikes() {
-      return this.totalLikes;
+      return this.totalLikes; //se encarga de mostrar cuantos likes contiene la receta
     }
   }
 });
@@ -78395,9 +78398,6 @@ console.log(Vue.prototype);
 var app = new Vue({
   el: '#app'
 });
-$('.like-btn').on('click', function () {
-  $(this).toggleClass('like-active');
-}); //jQuery
 
 /***/ }),
 

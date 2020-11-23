@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Perfil;
 use App\Models\Receta;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Controller;
 use Intervention\Image\Facades\Image;
 
 class PerfilController extends Controller
@@ -56,7 +57,7 @@ class PerfilController extends Controller
     public function update(Request $request, Perfil $perfil)
     {
         // Ejecutar el Policy
-        $this->authorize('update', $perfil);
+        $this->authorize('update', 'perfil');
 
         // Validar
         $data = request()->validate([
@@ -81,7 +82,7 @@ class PerfilController extends Controller
         // Asignar nombre y URL
         auth()->user()->url = $data['url'];
         auth()->user()->name = $data['nombre'];
-        auth()->user()->save();
+        auth()->user()->$save();
 
         // Eliminar url y name de $data
         unset($data['url']);

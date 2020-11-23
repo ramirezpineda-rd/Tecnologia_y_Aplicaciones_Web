@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLikesRecetaPivotTable extends Migration
+class CreatePerfilsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,13 @@ class CreateLikesRecetaPivotTable extends Migration
      */
     public function up()
     {
-        Schema::create('likes_receta', function (Blueprint $table) {
+        Schema::create('perfils', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->references('id')->on('users');
-            $table->foreignId('receta_id')->constrained();//Diferente manera de hacer el foreignId
+            $table->foreignId('user_id')->referrences('id')->on('users');
+            $table->text('biografia')->nullable();
+            $table->string('imagen')->nullable();
             $table->timestamps();
         });
-        //Vamos a tener información de la receta y de el usuario que le dio like.
     }
 
     /**
@@ -29,6 +29,6 @@ class CreateLikesRecetaPivotTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('likes_receta');
+        Schema::dropIfExists('perfils');
     }
 }

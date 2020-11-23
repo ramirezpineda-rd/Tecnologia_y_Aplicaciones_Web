@@ -2,9 +2,10 @@
 
 namespace App\Http\Controllers;
 use App\Models\Receta;
-use App\Models\CategoriaReceta;
 use Illuminate\Http\Request;
+use App\Models\CategoriaReceta;
 use Illuminate\Support\Facades\DB;
+use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Intervention\Image\Facades\Image;
 
@@ -29,7 +30,9 @@ class RecetaController extends Controller
         //Auth->user()->recetas->dd();
         //$recetas = auth()->user()->recetas;
 
-        $usuario = auth()->user();
+        $usuario = auth()->user();//->id 
+
+        //$meGusta = auth()->user()->meGusta; //BUENA FORMA DE HACERLO
 
         //Recetas en diversas paginas
         $recetas = Receta::where('user_id', $usuario->id)->paginate(10);
@@ -128,6 +131,7 @@ class RecetaController extends Controller
     {
         // Obtener si el usuario actual le gusta la receta y esta autenticado
         $like = ( auth()->user() ) ?  auth()->user()->meGusta->contains($receta->id) : false; 
+        //Método contains para verificar
 
         // Pasa la cantidad de likes a la vista
         $likes = $receta->likes->count();
@@ -215,15 +219,18 @@ class RecetaController extends Controller
         return redirect()->action('RecetaController@index');
     }
 
-    public function search(Request $request) 
+    public function search(Request $request) //Método de buscar para no hacer otro controlador más
     {
         // $busqueda = $request['buscar'];
-        $busqueda = $request->get('buscar');
+        $busqueda = $request->get('buscar');//En index.blade el name viene como buscar
 
         $recetas = Receta::where('titulo', 'like', '%' . $busqueda . '%')->paginate(10);
+        //Se permite la busqueda en base al titulo, el punto es para concatenar.
         $recetas->appends(['buscar' => $busqueda]);
+        //appends para agregar al querystring
 
         return view('busquedas.show', compact('recetas', 'busqueda'));
+        //Carpeta de busquedas en vistas. 
     }
 
 }

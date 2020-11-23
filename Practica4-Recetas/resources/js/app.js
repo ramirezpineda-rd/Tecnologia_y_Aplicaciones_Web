@@ -4,6 +4,9 @@
  * building robust, powerful web applications using Vue and Laravel.
  */
 
+import 'owl.carousel';//Para cargar el archivo de carousel de javascript
+
+
 import VueSweetalert2 from 'vue-sweetalert2';
 
 require('./bootstrap');
@@ -39,6 +42,30 @@ console.log(Vue.prototype);
 
 const app = new Vue({
     el: '#app',
+});
+
+//Carousel
+
+jQuery$(document).ready(function(){
+    jQuery$('.owl-carousel').owlCarousel({
+        margin:10,
+        loop: true,
+        autoplay: true,
+        autoplayHoverPause: true,
+        responsive:{// Esto para acomodar al tamaño hacia los dispositivos, 
+            //celular, computadora o tablet
+            0 : { // A los 0 pixeles muestra un objeto.
+                items: 1
+            },
+            600: {
+                items: 2
+
+            },
+            1000:{
+                items: 3
+            }
+        }
+    });
 });
 
 

@@ -1,6 +1,7 @@
 <template>
     <div>
          <span class="like-btn" @click="likeReceta" :class="{ 'like-active' : isActive }"></span>
+         <!--Recargar si el like es positivo, tambien en base al toogle-->
 
          <p>{{ cantidadLikes }} Les gustó esta receta</p>
     </div>
@@ -13,7 +14,7 @@
         data: function() {
             return {
                 isActive: this.like,
-                totalLikes: this.likes
+                totalLikes: this.likes //se encarga de mostrar cuantos likes contiene la receta
             }
         },
         methods: {
@@ -22,12 +23,13 @@
                     .then(respuesta => {
                         
                         if(respuesta.data.attached.length > 0 ) {
-                            this.$data.totalLikes++;
+                            this.$data.totalLikes++; //Para acceder al data
                         } else {
-                            this.$data.totalLikes--;
+                            this.$data.totalLikes--; //Cuando le quitan el meGusta
                         }
 
-                        this.isActive = !this.isActive
+                        this.isActive = !this.isActive //Se requiere el this, si es como true pasa false,
+                        //se esta como false pasa true.
                     })
                     .catch(error => {
                         if(error.response.status === 401) {
@@ -38,7 +40,7 @@
         }, 
         computed: {
             cantidadLikes: function() {
-                return this.totalLikes
+                return this.totalLikes //se encarga de mostrar cuantos likes contiene la receta
             }
         }
     }
