@@ -12,7 +12,7 @@
             <div class="row h-100 align-items-center"><!--Se centra el contenido verticalmente-->
                 <div class="col-md-4 texto-buscar"><!--Para que el imput no se extienda por toda la pagina-->
                     <p class="display-4">Encuentra una receta para tu próxima comida</p>
-
+                    <!--Buscador de recetas y verifica si existe alguna con el nombre ingresado-->
                     <input
                         type="search"
                         name="buscar"

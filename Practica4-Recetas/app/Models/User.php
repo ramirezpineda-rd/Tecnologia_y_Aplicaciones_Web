@@ -53,7 +53,7 @@ class User extends Authenticatable
         });//Métodos de elocuent
     }
 
-    //Relacion de uno a muchos  deusuario a recetas
+    //Relacion de uno a muchos de usuario a recetas
     public function recetas()
     {
         return $this->hasMany(Receta::class);

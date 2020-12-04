@@ -66,7 +66,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group mt-3">
+                <div class="form-group mt-3"><!--Campo para escribir los pasos de preparacion de la receta-->
                     <label for="preparacion">Preparación</label>
                     <input id="preparacion" type="hidden" name="preparacion" value="{{ old('preparacion') }}">
                     <trix-editor 
@@ -82,7 +82,7 @@
                 </div>
 
                 <div class="form-group mt-3">
-                    <label for="ingredientes">Ingredientes</label>
+                    <label for="ingredientes">Ingredientes</label><!--Campo para escribir los ingredientes-->
                     <input id="ingredientes" type="hidden" name="ingredientes" value="{{ old('ingredientes') }}">
                     <trix-editor 
                         class="form-control @error('ingredientes') is-invalid @enderror "
@@ -95,7 +95,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group mt-3">
+                <div class="form-group mt-3"><!--Campo para elegir la imagen de la receta-->
                     <label for="imagen">Elige la imagen</label>
 
                     <input 

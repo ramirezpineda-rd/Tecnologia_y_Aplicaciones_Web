@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <div class="container">
+    <div class="container"><!--Se ven los contenedores de las distintas recetas-->
         <h2 class="titulo-categoria text-uppercase mt-5 mb-4">
             Categoria: {{ $categoriaReceta->nombre }}
         </h2>
@@ -14,7 +14,7 @@
         </div>
 
         <div class="d-flex justify-content-center mt-5">
-            {{ $recetas->links() }}
+            {{ $recetas->links() }}<!--Opcion de los links de las recetas-->
         </div>
     </div>
 

@@ -2,7 +2,7 @@ extends('layouts.app')
 
 
 @section('content')
-    <div class="container">
+    <div class="container"><!--Especificamente para la busqueda de las recetas-->
         <h2 class="titulo-categoria text-uppercase mt-5 mb-4">
             Resultados de la Búsqueda que deceas: {{ $busqueda }}
         </h2>

@@ -12,17 +12,17 @@ integrity="sha256-yebzx8LjuetQ3l4hhQ5eNaOxVLgqaY1y8JcrXuJrAOg=" crossorigin="ano
     <a href="{{ route('recetas.index') }}" class="btn btn-outline-primary mr-2 text-uppercase font-weight-bold">
     <svg class="icono" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" stroke="currentColor" viewBox="0 0 24 24"><path d="M11 15l-3-3m0 0l3-3m-3 3h8M3 12a9 9 0 1118 0 9 9 0 01-18 0z"></path></svg>
     Volver
-@endsection
+@endsection<!--Estilos y disenios de los botones-->
 
 
 @section('content')
 
     <h2 class="text-center mb-5">Editar Receta: {{$receta->titulo}} </h2>
-
+    <!--Inicio de campo para editar la receta-->
 
     <div class="row justify-content-center mt-5">
         <div class="col-md-8">
-            <form method="POST" action="{{ route('recetas.update', ['receta' => $receta->id]) }}" enctype="multipart/form-data" novalidate>
+            <form method="POST" action="{{ route('recetas.update', ['receta' => $receta->id]) }}" enctype="multipart/form-data" novalidate> <!--Para actualizar la receta-->
                 @csrf
 
                 @method('PUT')
@@ -57,7 +57,7 @@ integrity="sha256-yebzx8LjuetQ3l4hhQ5eNaOxVLgqaY1y8JcrXuJrAOg=" crossorigin="ano
                             <option
                                 value="{{ $categoria->id }}"
                                 {{ $receta->categoria_id == $categoria->id ? 'selected' : '' }}
-                            >{{$categoria->nombre}}</option>
+                            >{{$categoria->nombre}}</option> <!--Para editar la categoria de receta-->
                         @endforeach
                     </select>
 
@@ -68,7 +68,7 @@ integrity="sha256-yebzx8LjuetQ3l4hhQ5eNaOxVLgqaY1y8JcrXuJrAOg=" crossorigin="ano
                     @enderror
                 </div>
 
-                <div class="form-group mt-3">
+                <div class="form-group mt-3"><!--Campo para editar la preparacion de recetas-->
                     <label for="preparacion">Preparación</label>
                     <input id="preparacion" type="hidden" name="preparacion" value="{{ $receta->preparacion }}">
                     <trix-editor
@@ -84,7 +84,7 @@ integrity="sha256-yebzx8LjuetQ3l4hhQ5eNaOxVLgqaY1y8JcrXuJrAOg=" crossorigin="ano
                 </div>
 
                 <div class="form-group mt-3">
-                    <label for="ingredientes">Ingredientes</label>
+                    <label for="ingredientes">Ingredientes</label><!--Campo para documentar los ingredientes de recetas-->
                     <input id="ingredientes" type="hidden" name="ingredientes" value="{{ $receta->ingredientes }}">
                     <trix-editor
                         class="form-control @error('ingredientes') is-invalid @enderror "
@@ -97,7 +97,7 @@ integrity="sha256-yebzx8LjuetQ3l4hhQ5eNaOxVLgqaY1y8JcrXuJrAOg=" crossorigin="ano
                     @enderror
                 </div>
 
-                <div class="form-group mt-3">
+                <div class="form-group mt-3"><!--Campo referente para subir la imagen-->
                     <label for="imagen">Elige la imagen</label>
 
                     <input
@@ -133,7 +133,7 @@ integrity="sha256-yebzx8LjuetQ3l4hhQ5eNaOxVLgqaY1y8JcrXuJrAOg=" crossorigin="ano
 
 <!---Definir la seccion de los script de editor Trix-->
 
-@section('scripts')
+@section('scripts')<!--Scripts de trix.js para disenios-->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/trix/1.2.1/trix.js" 
 integrity="sha256-2D+ZJyeHHlEMmtuQTVtXt1gl0zRLKr51OCxyFfmFIBM=" 
 crossorigin="anonymous" defer></script>

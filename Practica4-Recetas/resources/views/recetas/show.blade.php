@@ -16,7 +16,7 @@
                 <span class="font-weight-bold text-primary">Escrito en:</span>
                 <a class="text-dark" href="{{ route('categorias.show', ['categoriaReceta' => $receta->categoria->id ]) }} ">
                     {{$receta->categoria->nombre}}
-                </a>
+                </a><!--Apartado para las categorias-->
 
             </p>
 
@@ -24,7 +24,7 @@
                 <span class="font-weight-bold text-primary">Autor:</span>
                 <a class="text-dark" href="{{ route('perfiles.show', ['perfil' => $receta->autor->id ]) }} ">
                     {{$receta->autor->name}}
-                </a>
+                </a><!--Apartado para el autor de la receta-->
 
             </p>
 
@@ -35,7 +35,7 @@
                 @endphp
 
                 <fecha-receta fecha="{{$fecha}}" ></fecha-receta>
-            </p>
+            </p><!--Codigo para la fecha y creacion de receta-->
 
 
 
